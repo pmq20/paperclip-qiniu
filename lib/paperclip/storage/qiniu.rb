@@ -76,7 +76,7 @@ module Paperclip
       end
 
       def upload(file, path)
-        upload_token = ::Qiniu::RS.generate_upload_token :scope => bucket
+        upload_token = ::Qiniu::RS.generate_upload_token :scope => "#{bucket}:#{path}"
         opts = {:uptoken            => upload_token,
                  :file               => file.path,
                  :key                => path,
